@@ -7,7 +7,7 @@ void enqueue(void *to_enqueue) {
 	if (NULL == queue_end && NULL == queue_start) {
 		queue_end = calloc(1, sizeof(*queue_end));
 		if (NULL == queue_end) {
-			fprintf(stderr, "Failed to initialize queue end");
+			fputs("Failed to initialize queue end", stderr);
 			exit(-1);
 		}
 		queue_end->element = to_enqueue;
