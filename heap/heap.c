@@ -98,7 +98,11 @@ void *pop_next() {
 		void *to_return = heap_array[1]->element;
 		swap(size, 1);
 		heap **temp;
-		temp = realloc(heap_array, sizeof(**heap_array)*--size);
+		temp = (heap **) realloc(heap_array, sizeof(**heap_array)*--size);
+		if (NULL == temp) {
+			fputs("Failed to shrink heap", stderr);
+			exit(-1);
+		}
 		heap_array = temp;
 		if (size > 1) {
 			sink_down(1);
