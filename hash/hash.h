@@ -10,7 +10,7 @@ typedef struct hash_node {
 	void *value;
 } hash;
 
-/* This API works with integers only. A custom conversion function for different data is required */
+/* This API works with integers only. A custom conversion function for different data types is required */
 
 /* Gets a key */
 extern void *get(int key);
