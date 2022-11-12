@@ -43,6 +43,7 @@ int match(const char *string, int length) {
 		}
 		state = graph[state][string[i] - 32];
 		if (state == p_size) {
+			printf("Valid shift from %d to %d\n", i + 1 - p_size, i);
 			state = 0;
 			matches++;
 		}
