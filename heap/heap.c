@@ -138,7 +138,7 @@ void *peek() {
 	}
 }
 
-char is_emtpy() {
+char is_emtpy_heap() {
 	if (NULL == heap_array) {
 		return 1;
 	} else {
