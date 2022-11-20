@@ -12,6 +12,6 @@ typedef struct queue_element {
 extern void enqueue(void *to_enqueue);
 extern void *dequeue();
 extern void *peek();
-extern char is_empty();
+extern char is_empty_queue();
 
 #endif
