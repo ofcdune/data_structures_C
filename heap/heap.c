@@ -130,7 +130,7 @@ void update_priority(void *to_update, int new_priority) {
 	}
 }
 
-void *get_next() {
+void *peek() {
 	if (NULL == heap_array) {
 		return NULL;
 	} else {
