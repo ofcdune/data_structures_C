@@ -53,7 +53,7 @@ void *peek() {
 	}
 }
 
-char is_empty() {
+char is_empty_queue() {
 	if (NULL == queue_end || NULL == queue_start) {
 		return 1;
 	} else {
