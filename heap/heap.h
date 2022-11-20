@@ -13,6 +13,6 @@ extern void insert(void *to_insert, int priority);
 extern void *peek();
 extern void *pop_next();
 extern void update_priority(void *to_update, int new_priority);
-extern char is_empty();
+extern char is_empty_heap();
 
 #endif
