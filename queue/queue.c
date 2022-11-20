@@ -45,6 +45,14 @@ void *dequeue() {
 	}
 }
 
+void *peek() {
+	if (NULL == queue_end) {
+		return NULL;
+	} else {
+		return queue_end->element;
+	}
+}
+
 char is_empty() {
 	if (NULL == queue_end || NULL == queue_start) {
 		return 1;
