@@ -46,7 +46,7 @@ void *peek() {
 	}
 }
 
-char is_empty() {
+char is_empty_heap() {
 	if (NULL == stack_end) {
 		return 1;
 	} else {
