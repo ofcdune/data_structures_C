@@ -9,4 +9,9 @@ typedef struct stack_element {
 	void *element;
 } stack;
 
+extern void push(void *to_push);
+extern void *pop();
+extern void *peek();
+extern char is_empty_heap();
+
 #endif
