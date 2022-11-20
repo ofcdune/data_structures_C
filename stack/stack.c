@@ -25,16 +25,24 @@ void push(void *to_push) {
 
 void *pop() {
 	if (NULL == stack_end) {
-		/* this means the queue has already been purged, we cannot return nothing, so we allocate one byte on the heap */
-		return malloc(1);
+		puts("The stack is NULL");
+		/* this means the stack has already been purged */
+		return NULL;
 	} else {
 		void *to_return = stack_end->element;
-		stack *ptr;
-		ptr = stack_end;
+		stack *ptr = stack_end;
 		stack_end = stack_end->next;
 		ptr->next = NULL;
 		free(ptr);
 		return to_return;
+	}
+}
+
+void *peek() {
+	if (NULL == stack_end) {
+		return NULL;
+	} else {
+		return stack_end->element;
 	}
 }
 
