@@ -12,6 +12,6 @@ typedef struct stack_element {
 extern void push(void *to_push);
 extern void *pop();
 extern void *peek();
-extern char is_empty_heap();
+extern char is_empty_stack();
 
 #endif
