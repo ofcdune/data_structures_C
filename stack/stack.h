@@ -1,18 +1,18 @@
 #ifndef STACK_STACK_H
 #define STACK_STACK_H
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-typedef struct AuxiliaryNode {
-    unsigned int size;
-    struct StackElement *stack_end;
+typedef struct AuxiliaryNodeS {
+	unsigned int size;
+	struct StackElement *stack_end;
 } stack;
 
 extern void push(void *to_push, stack *stack);
 extern void *pop(stack *stack);
 extern void *peek_stack(stack *stack);
 extern char is_empty_stack(stack *stack);
-extern stack *initialize();
+extern stack *initialize_stack();
 
 #endif
