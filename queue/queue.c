@@ -1,43 +1,66 @@
 #include "queue.h"
 
-queue *queue_start;
-queue *queue_end;
+typedef struct QueueElement {
+	struct QueueElement *next;
+	void *element;
+} queue_inner;
 
-void enqueue(void *to_enqueue) {
-	if (NULL == queue_end && NULL == queue_start) {
-		queue_end = calloc(1, sizeof(*queue_end));
-		if (NULL == queue_end) {
-			fputs("Failed to initialize queue end", stderr);
-			exit(-1);
-		}
-		queue_end->element = to_enqueue;
-		queue_start = queue_end;
-		queue_end->next = NULL;
-	} else {
-		/* the edge case here is that the end pointer points to the same element as queue_start */
-		queue *ptr = calloc(1, sizeof(*ptr));
-		ptr->element = to_enqueue;
-		ptr->next = NULL;
-		queue_end->next = ptr;
-		queue_end = queue_end->next;
+queue *initialize() {
+	queue *aux_node = (queue *) malloc(sizeof(*aux_node));
+	if (NULL == aux_node) {
+		fputs("Could not allocate memory to >>queue *aux_node<<", stderr);
+		exit(-1);
 	}
+	queue_inner *queue_start = NULL;
+	queue_inner *queue_end = NULL;
+	aux_node->size = 0;
+	aux_node->queue_start = queue_start;
+	aux_node->queue_end = queue_end;
+
+	return aux_node;
 }
 
-void *dequeue() {
-	if (NULL == queue_end && NULL == queue_start) {
+void enqueue(void *to_enqueue, queue* queue) {
+	if (NULL == queue->queue_end && NULL == queue->queue_start) {
+		queue->queue_end = calloc(1, sizeof(*queue->queue_end));
+		if (NULL == queue->queue_end) {
+			fputs("Failed to initialize >>queue *queue->queue end<<", stderr);
+			exit(-1);
+		}
+		queue->queue_end->element = to_enqueue;
+		queue->queue_start = queue->queue_end;
+		queue->queue_end->next = NULL;
+	} else {
+		/* the edge case here is that the end pointer points to the same element as queue_start */
+		queue_inner *queue_walker = calloc(1, sizeof(*queue_walker));
+		if (NULL == queue_walker) {
+			fputs("Could not allocate memory for >>queue_inner *queue_walker<<", stderr);
+			exit(-1);
+		}
+		queue_walker->element = to_enqueue;
+		queue_walker->next = NULL;
+		queue->queue_end->next = queue_walker;
+		queue->queue_end = queue->queue_end->next;
+	}
+	queue->size++;
+}
+
+void *dequeue(queue *queue) {
+	if (NULL == queue->queue_end && NULL == queue->queue_start) {
 		/* this means the queue has already been purged, we cannot return nothing, so we allocate one byte on the heap */
 		return malloc(1);
 	} else {
 		/* now we need to make sure that if the last element is taken, both queue ends are NULL */
-		queue *ptr;
-		ptr = queue_start;
+		queue_inner *ptr;
+		ptr = queue->queue_start;
 		void *to_return = ptr->element;
-		if (NULL == queue_start->next) {
+		queue->size--;
+		if (NULL == queue->queue_start->next) {
 			/* meaning, we have only one element in the queue, the queue start is also the queue end */
-			queue_start = NULL;
-			queue_end = NULL;
+			queue->queue_start = NULL;
+			queue->queue_end = NULL;
 		} else {
-			queue_start = queue_start->next;
+			queue->queue_start = queue->queue_start->next;
 			ptr->next = NULL;
 		}
 		free(ptr);
@@ -45,16 +68,16 @@ void *dequeue() {
 	}
 }
 
-void *peek() {
-	if (NULL == queue_end) {
+void *peek_queue(queue *queue) {
+	if (NULL == queue->queue_end) {
 		return NULL;
 	} else {
-		return queue_end->element;
+		return queue->queue_end->element;
 	}
 }
 
-char is_empty_queue() {
-	if (NULL == queue_end || NULL == queue_start) {
+char is_empty_queue(queue *queue) {
+	if (NULL == queue->queue_end || NULL == queue->queue_start) {
 		return 1;
 	} else {
 		return 0;
