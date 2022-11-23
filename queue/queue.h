@@ -4,14 +4,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct queue_element {
-	struct queue_element *next;
-	void *element;
+typedef struct AuxiliaryNode {
+	unsigned int size;
+	struct QueueElement *queue_start, *queue_end;
 } queue;
 
-extern void enqueue(void *to_enqueue);
-extern void *dequeue();
-extern void *peek();
-extern char is_empty_queue();
+extern void enqueue(void *to_enqueue, queue *queue);
+extern void *dequeue(queue *queue);
+extern void *peek_queue(queue *queue);
+extern char is_empty_queue(queue *queue);
 
 #endif
