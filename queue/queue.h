@@ -5,8 +5,7 @@
 #include <stdio.h>
 
 typedef struct AuxiliaryNodeQ {
-	unsigned int size;
-	struct QueueElement *queue_start, *queue_end;
+    struct QueueElement *queue_start, *queue_end;
 } queue;
 
 extern void enqueue(void *to_enqueue, queue *queue);
