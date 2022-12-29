@@ -6,7 +6,7 @@ typedef struct QueueElement {
 } queue_inner;
 
 queue *initialize_queue() {
-    queue *aux_node = (queue *) malloc(sizeof(*aux_node));
+    queue *aux_node = (queue *) calloc(1, sizeof(*aux_node));
     if (NULL == aux_node) {
         fputs("Could not allocate memory to <<queue *aux_node>>", stderr);
         exit(-1);
