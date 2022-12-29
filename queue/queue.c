@@ -45,8 +45,7 @@ void enqueue(void *to_enqueue, queue* queue) {
 
 void *dequeue(queue *queue) {
     if (NULL == queue->queue_end && NULL == queue->queue_start) {
-        /* this means the queue has already been purged, we cannot return nothing, so we allocate one byte on the heap */
-        return malloc(1);
+        return NULL;
     } else {
         /* now we need to make sure that if the last element is taken, both queue ends are NULL */
         queue_inner *ptr;
