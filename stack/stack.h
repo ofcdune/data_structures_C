@@ -5,7 +5,6 @@
 #include <stdio.h>
 
 typedef struct AuxiliaryNodeS {
-	unsigned int size;
 	struct StackElement *stack_end;
 } stack;
 
