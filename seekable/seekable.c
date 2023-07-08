@@ -58,7 +58,7 @@ char seek_left(seek *node) {
     return -1;
 }
 
-void set(void *restrict object, struct SeekableNode *restrict node) {
+void set_current(void *restrict object, struct SeekableNode *restrict node) {
     if (NULL != node->object) {
         free(node->object);
     }
