@@ -1,6 +1,6 @@
 #include "seekable.h"
 
-seek *initialize() {
+seek *initialize_seekable() {
     seek *toreturn = (seek *) calloc(1, sizeof(*toreturn));
     if (NULL == toreturn) {
         fputs("Failed to initialize buffer", stderr);
