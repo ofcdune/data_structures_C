@@ -14,6 +14,10 @@ seek *initialize() {
     }
     toreturn->current = toreturn->start;
 
+    /* initializing the sentinel nodes right and left of the current position */
+    insert_node_right(toreturn);
+    insert_node_left(toreturn);
+
     return toreturn;
 }
 
