@@ -21,7 +21,7 @@ extern void *peek_left(seek *node);
 extern char seek_right(seek *node);
 extern char seek_left(seek *node);
 
-extern void set_cuurent(void *restrict object, struct SeekableNode *restrict node);
+extern void set_current(void *restrict object, struct SeekableNode *restrict node);
 extern void set_right(void *restrict object, struct SeekableNode *restrict node);
 extern void set_left(void *restrict object, struct SeekableNode *restrict node);
 extern void insert_node_right(seek *node);
