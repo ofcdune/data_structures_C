@@ -3,14 +3,14 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "alloc_s.h"
+#include "../alloc_s.h"
 
 typedef struct AuxiliaryNodeQ {
     struct QueueElement *queue_start, *queue_end;
 } queue;
 
-void queue_enqueue(unsigned long long to_enqueue, queue *queue);
-unsigned long long queue_dequeue(queue *queue);
+void queue_enqueue(void *restrict to_enqueue, queue *restrict queue);
+void *queue_dequeue(queue *queue);
 bool queue_is_empty(queue *queue);
 queue *queue_initialize();
 
