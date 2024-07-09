@@ -20,7 +20,7 @@ struct hash_node {
     struct hash_node *next;
 };
 
-struct hash_root *hash_create_hashmap(unsigned int bucket_size);
+struct hash_root *hash_initialize(unsigned int bucket_size);
 bool hash_insert(struct hash_root *restrict hashmap, unsigned int key, void *restrict value);
 void *hash_get(struct hash_root *restrict hashmap, unsigned int key);
 bool hash_exists(struct hash_root *restrict hashmap, unsigned int key);
