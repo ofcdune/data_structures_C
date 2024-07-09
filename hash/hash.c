@@ -23,7 +23,7 @@ unsigned int hash(struct hash_root *restrict hashmap, unsigned int key) {
  * Output:
  * - struct hash_root *root: The new hashmap;
  */
-struct hash_root *hash_create_hashmap(unsigned int bucket_size) {
+struct hash_root *hash_initialize(unsigned int bucket_size) {
     NEW(struct hash_root, root, 1)
     root->bucket_size = bucket_size;
     root->bucket = (struct hash_node **) calloc(bucket_size, sizeof(**root->bucket));
