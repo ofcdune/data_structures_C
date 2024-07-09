@@ -132,7 +132,11 @@ void *hash_get(struct hash_root *restrict hashmap, unsigned int key) {
  * - bool exists: true if the value exists;
  */
 bool hash_exists(struct hash_root *restrict hashmap, unsigned int key) {
-    return NULL != hash_get(hashmap, key);
+    struct hash_node *node = internal_hash_get_node(hashmap, key);
+    if (NULL == node) {
+        return NULL;
+    }
+    return NULL != node;
 }
 
 /* This internal function deletes the given hash node and restores the linked list.
